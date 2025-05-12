@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  web-custom: #Thay đổi tên Service
+  web-custom: #Thay đổi tên Service theo yêu cầu thay đổi port, name
     build:
       context: ./docker/nginx
       dockerfile: Dockerfile
@@ -11,7 +11,7 @@ services:
       - ./app:/var/www/html
       - ./docker/nginx/conf:/etc/nginx/conf.d
     depends_on:
-      - php-custom
+      - php-custom #Cập nhật thay đổi để trỏ đến tên service mới
     networks:
       - app-network
 
@@ -53,11 +53,11 @@ services:
       PMA_ARBITRARY: 0
       PHP_UPLOAD_MAX_FILESIZE: 2M # Thêm dòng này
     depends_on:
-      - db-custom
+      - db-custom #Cập nhật thay đổi để trỏ đến tên service mới
     networks:
       - app-network
     #extra_hosts: bỏ 2 dòng này vì với PMA_HOSTS:db-custom thì Docker compose tự động phân giải tên service trong mạng
-      #- "db-custom:127.0.0.1"
+      #- "db-custom:127.0.0.1" #Cập nhật thay đổi để khớp với tên service mới của dâtbase
 
 networks:
   app-network:
