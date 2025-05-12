@@ -51,6 +51,7 @@ services:
       PMA_USER: root
       PMA_PASSWORD: root
       PMA_ARBITRARY: 0
+      PHP_UPLOAD_MAX_FILESIZE: 2M # Thêm dòng này
     depends_on:
       - db
     networks:
