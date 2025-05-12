@@ -29,10 +29,11 @@ services:
   db:
     image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root # Giữ lại dòng này
       MYSQL_DATABASE: users
-      MYSQL_USER: root
-      MYSQL_PASSWORD: ""
+      # Xóa hai dòng sau:
+      # MYSQL_USER: root
+      # MYSQL_PASSWORD: ""
     ports:
       - "3306:3306"
     volumes:
@@ -48,7 +49,7 @@ services:
       PMA_HOST: db
       PMA_PORT: 3306
       PMA_USER: root
-      PMA_PASSWORD: root # <--- ĐÂY LÀ THAY ĐỔI QUAN TRỌNG
+      PMA_PASSWORD: root
       PMA_ARBITRARY: 0
     depends_on:
       - db
