@@ -17,7 +17,7 @@ services:
 
   php:
     build:
-      context: .  # Quan trọng: context là thư mục gốc của dự án
+      context: .
       dockerfile: ./docker/php/Dockerfile
     volumes:
       - ./app:/var/www/html
@@ -27,12 +27,12 @@ services:
       - app-network
 
   db:
-    image: mysql:5.7 # Hoặc phiên bản MySQL bạn đang dùng
+    image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: root # Thay đổi nếu bạn muốn đặt mật khẩu root khác
-      MYSQL_DATABASE: users # Lấy từ file config của bạn
-      MYSQL_USER: root # Lấy từ file config của bạn
-      MYSQL_PASSWORD: "" # Lấy từ file config của bạn (đang trống)
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: users
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ""
     ports:
       - "3306:3306"
     volumes:
@@ -48,12 +48,14 @@ services:
       PMA_HOST: db
       PMA_PORT: 3306
       PMA_USER: root
-      PMA_PASSWORD: root # Sử dụng mật khẩu root của MySQL
+      PMA_PASSWORD: ""
       PMA_ARBITRARY: 0
     depends_on:
       - db
     networks:
       - app-network
+    extra_hosts:
+      - "db:127.0.0.1"
 
 networks:
   app-network:
