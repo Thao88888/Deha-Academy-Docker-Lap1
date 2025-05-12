@@ -48,7 +48,7 @@ services:
       PMA_HOST: db
       PMA_PORT: 3306
       PMA_USER: root
-      PMA_PASSWORD: ""
+      PMA_PASSWORD: root # <--- ĐÂY LÀ THAY ĐỔI QUAN TRỌNG
       PMA_ARBITRARY: 0
     depends_on:
       - db
