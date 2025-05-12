@@ -27,7 +27,7 @@ services:
       - app-network
 
   db:
-    image: mysql:5.7
+    image: mysql:latest
     environment:
       MYSQL_ROOT_PASSWORD: root # Giữ lại dòng này
       MYSQL_DATABASE: users
